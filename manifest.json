@@ -1,0 +1,26 @@
+{
+  "description": "Twitter Profile Notes",
+  "manifest_version": 2,
+  "name": "Note+",
+  "version": "1.0",
+  "background": {
+	"scripts": ["background.js"]
+  },
+  "permissions": [
+    "activeTab"
+	"webRequest",
+	"webRequestBlocking",
+	"*://twitter.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*"],
+      "js": ["profile.js"],
+	  "all_frames": true
+    }
+  ],
+  "browser_action": {
+    "browser_style": true,
+    "default_popup": "popup/pop.html"
+  }
+}
