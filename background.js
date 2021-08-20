@@ -38,15 +38,16 @@ function listener(details)
 		
 		/** Send Message **/
 		let dbReq = db.transaction(["users"]).objectStore("users").get(uid);
-		let data = {};
+		var sdata = {};
 		dbReq.onsuccess = function(event) {
+			console.log(sdata);
 			if(dbReq.result != undefined) {
-				data.comment = dbReq.result.comment;
-				data.tag = dbReq.result.tag;
+				sdata.comment = dbReq.result.comment;
+				sdata.tag = dbReq.result.tag;
 			}
 			browser.tabs.sendMessage(tabid, {
 				action: 0,
-				data: data
+				data: sdata
 			});
 		};
 	};
