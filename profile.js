@@ -32,15 +32,17 @@ function createMyNote(data)
 		popup.getElementsByTagName("button")[0].onclick = function(){
 			let comment = popup.getElementsByTagName("textarea")[0];
 			let tag = popup.getElementsByTagName("input")[0];
-			if(comment.textLength == 0) return;
-			
+			if(comment.textLength == 0) {
+				popup.style = styleHidden;
+				return;
+			}
 			browser.runtime.sendMessage({
 				action: 2,
 				comment: comment.value,
 				tag: tag != undefined ? tag.value : undefined
 			 });
 		};
-		popup.style = styleVisible
+		popup.style = styleVisible;
 	}
 	div1.className = "css-18t94o4 css-1dbjc4n r-1niwhzg r-1ets6dv r-sdzlij r-1phboty r-rs99b7 r-6gpygo r-1kb76zh r-2yi16 r-1qi8awa r-1ny4l3l r-o7ynqc r-6416eg r-lrvibr";
 	div2.className = "css-901oao r-1awozwy r-18jsvk2 r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0";
