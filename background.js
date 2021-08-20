@@ -9,7 +9,8 @@ request.onsuccess = function (event)
 	pageReceiver(event.target.result);
 };
 
-request.onupgradeneeded = function (event) {
+request.onupgradeneeded = function (event)
+{
 	let db = event.target.result;
 	let objStore = db.createObjectStore("users", { keyPath: "uid" });
 	objStore.createIndex("tag", "tag", { unique: false });
