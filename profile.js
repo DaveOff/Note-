@@ -27,20 +27,17 @@ function createMyNote(data)
 	div1.onclick = function(){
 		var popup = document.getElementById('popup');
 		popup.getElementsByClassName('popupCloseButton')[0].onclick = function(){
-			popup.style = styleHidden
+			popup.style = styleHidden;
 		};
 		popup.getElementsByTagName("button")[0].onclick = function(){
 			let comment = popup.getElementsByTagName("textarea")[0];
 			let tag = popup.getElementsByTagName("input")[0];
-			if(comment.textLength == 0) {
-				popup.style = styleHidden;
-				return;
-			}
 			browser.runtime.sendMessage({
 				action: 2,
 				comment: comment.value,
 				tag: tag != undefined ? tag.value : undefined
 			 });
+			popup.style = styleHidden;
 		};
 		popup.style = styleVisible;
 	}
